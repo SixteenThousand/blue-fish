@@ -4,6 +4,6 @@ else
 	CONF_DIR=$(XDG_CONFIG_DIR)/fish
 endif
 install:
-	stow -S . -t $(CONF_DIR)
+	ln -s $(PWD) $(CONF_DIR)
 uninstall:
-	stow -D . -t $(CONF_DIR)
+	trash $(CONF_DIR)
