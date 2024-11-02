@@ -8,9 +8,9 @@ function fish_prompt
         '\e]133;P\007\e]133;A\e\\' \
         "\e[33m$USER\e[0m" \
         "\e[35m$HOSTNAME\e[0m" \
-        "\e[36mfish\e[0m" \
+        "\e[36m$(fish -v | sed 's/, version /.v/')\e[0m" \
         "\e[1;34m$(prompt_pwd --dir-length 0)\e[0m" \
-        "\e[34mjobs??\e[0m" \
+        "\e[34m$(jobs | wc -l)\e[0m" \
         "\e[3;32m $(git branch --show-current 2>/dev/null)\e[0m" \
         "\e[31m~>\e[0m" \
         '\e]133;B\007'
