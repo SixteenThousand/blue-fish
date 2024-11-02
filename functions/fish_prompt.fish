@@ -15,13 +15,3 @@ function fish_prompt
         "\e[31m~>\e[0m" \
         '\e]133;B\007'
 end
-
-# function fish_right_prompt
-#     printf "%s%s%s" $(set_color green) $(date) $(set_color normal)
-# end
-
-function get_git_branch
-    if set GIT_BRANCH $(git branch --show-current 2>/dev/null)
-        echo " $GIT_BRANCH"
-    end
-end
