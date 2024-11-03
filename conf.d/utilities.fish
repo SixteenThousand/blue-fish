@@ -1,6 +1,6 @@
 # Move To!
 function mvt
-    argparse 'c/cwd=+' 'd/depth=+' 'h/help' 's/search-directory=+' -- $argv
+    argparse 'c/cwd' 'd/depth=+' 'h/help' 's/search-directory=+' -- $argv
     if set -ql _flag_help
         echo -e "\
 Move To! Options:
