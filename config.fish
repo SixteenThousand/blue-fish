@@ -23,6 +23,12 @@ bind \e\[1\;3C 'mvt -c; commandline -f repaint'
 bind \e- 'cd ..; commandline -f repaint'
 
 # prompt
+function fish_vcs_prompt
+    if set -l fish_vcs_info $(git branch --show-current 2>/dev/null)
+        echo " $fish_vcs_info"
+    end
+end
+
 function fish_prompt
     set -l last_status $status
     set -l status_prompt
@@ -36,7 +42,7 @@ function fish_prompt
         "\e[36m$(fish -v | sed 's/, version /.v/')\e[0m" \
         "\e[1;34m$(prompt_pwd --dir-length 0)\e[0m" \
         "\e[34m$(jobs | wc -l)\e[0m" \
-        "\e[3;32m $(git branch --show-current 2>/dev/null)\e[0m" \
+        "\e[3;32m$(fish_vcs_prompt)\e[0m" \
         "\e[31m~>\e[0m" \
         '\e]133;B\007'
 end
