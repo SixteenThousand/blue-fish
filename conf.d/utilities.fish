@@ -50,10 +50,18 @@ end
 
 # do old commands
 function stale
-    set -l OLD_CMD $(history | fzf)
-    echo "Executing >>$OLD_CMD<<"
-    read --prompt-str "Are you sure? (y/n) -> " SURENESS
-    if test $SURENESS = 'y'
-        eval $OLD_CMD
+    history merge
+    set -l stale_cmd $(history --show-time='%b %d %H:%M:%S | ' | fzf)
+    if test -z "$stale_cmd"
+		echo 'Ok, back to the present I guess...'
+		return
+    end
+    set stale_cmd $(echo $stale_cmd | cut -d '|' -f 2)
+    read --prompt-str \
+        "About to run >>[1m$stale_cmd[0m<<. Proceed (y/N)? " proceed
+    if test $proceed = 'y'
+        eval "$stale_cmd"
+    else
+		echo "...well, I guess we're not doing that then"
     end
 end
