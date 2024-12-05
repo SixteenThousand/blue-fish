@@ -49,3 +49,7 @@ function fish_prompt
         "\e[31m~>\e[0m" \
         '\e]133;B\007'
 end
+
+function fish_greeting
+    fastfetch
+end
