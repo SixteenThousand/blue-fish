@@ -1,4 +1,4 @@
-abbr --add sys systemctl
+abbr --add syc systemctl
 
 # REPLs
 abbr --add py python
@@ -18,6 +18,7 @@ alias ls 'ls --color=always -A --group-directories-first'
 alias sbcl 'rlwrap sbcl'
 alias nv nvim
 alias code codium
+alias te 'tree -a -I .git -I node_modules'
 
 bind \cg 'mvt; commandline -f repaint'
 bind \eg 'mvt -c; commandline -f repaint'
